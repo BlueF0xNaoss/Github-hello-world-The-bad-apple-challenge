@@ -1,4 +1,4 @@
-SIZE= (480,360) #Taille de l'image, conditionne sa qualité
+SIZE= (80,60) #Taille de l'image, conditionne sa qualité
 
 FRAME_NUMBER=6572   #Nombre de Frame de la vidéo
 
@@ -8,6 +8,6 @@ FRAME_PATH="frames/"
 
 BINFRAME_PATH="Binframes/"
 
-PACKED_ARRAY="original-(480,360).npy"   #Le fichier binaire
+PACKED_ARRAY=f"{SIZE}.npy"   #Le fichier binaire
 
 WINDOW= 800,600     #La taille de la fenêtre

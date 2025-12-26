@@ -26,7 +26,7 @@ Fenetre.set_palette(palette)
 
 print("Lancement de l'audio")
 pygame.mixer_music.load("Audio.mp3")
-pygame.mixer_music.play(loops=1)
+pygame.mixer_music.play(loops=-1)
 
 Frame_id=0
 lastshot= time.time_ns()
@@ -48,7 +48,7 @@ while 1:
         display.blit(pygame.transform.scale(Fenetre,espace),Main_rectangle)
 
         Frame_id+=1
-        Frame_id=Frame_id%6572
+        Frame_id=Frame_id%6532
         lastshot=current
 
         pygame.display.flip()
