@@ -1,0 +1,7 @@
+*.mp3
+*.npy
+__pycache__
+.venv
+/Binframes
+/frames
+Co-dec.py
