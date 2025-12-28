@@ -13,10 +13,10 @@ def convert_and_resize(path=FRAME_PATH,repath=BINFRAME_PATH,size=(80,60)):
             pl.open(f"{path}output_{a:0>4}.jpg").convert("1").resize(size).save(f"{repath}output_{a:0>4}.jpg")
             Bar.advance(Id)
 
-def save(size=(60,80),name="Bad_appled",path=BINFRAME_PATH):
+def save(size=SIZE,name=f"{SIZE}".replace(' ',''),path=BINFRAME_PATH):
     global State
     State=0
-    dataset=np.zeros((6572,size[0],size[1]),dtype=np.uint8)
+    dataset=np.zeros((FRAME_NUMBER,size[0],size[1]),dtype=np.uint8)
 
     #Spamme les Thread si tu veux mais avec ma petite config je peux pas aller bien loin
     #Assure-toi juste que Thread_count en tienne compte
@@ -27,7 +27,7 @@ def save(size=(60,80),name="Bad_appled",path=BINFRAME_PATH):
     Thread_count=2
 
     while True:
-        if State==Thread_count:
+        if State>=Thread_count:
             print("File registering")
             dataset=np.packbits(dataset) #C'est ici qu'on empaquette les données de l'array ça compresse énomément, ça divise pratiquement par 6 la taille du paquet et pour un coût en calcul plutôt faible
             np.save(f"{path+name}",dataset)

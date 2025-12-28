@@ -48,7 +48,7 @@ while 1:
         display.blit(pygame.transform.scale(Fenetre,espace),Main_rectangle)
 
         Frame_id+=1
-        Frame_id=Frame_id%6532
+        Frame_id=Frame_id%6520
         lastshot=current
 
         pygame.display.flip()

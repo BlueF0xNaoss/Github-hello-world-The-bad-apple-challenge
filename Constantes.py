@@ -8,6 +8,6 @@ FRAME_PATH="frames/"
 
 BINFRAME_PATH="Binframes/"
 
-PACKED_ARRAY=f"{SIZE}.npy"   #Le fichier binaire
+PACKED_ARRAY=f"{SIZE}.npy".replace(' ','')   #Le fichier binaire
 
 WINDOW= 800,600     #La taille de la fenêtre
