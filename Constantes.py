@@ -1,6 +1,7 @@
 SIZE= (80,60) #Taille de l'image, conditionne sa qualité
 
 FRAME_NUMBER=6572   #Nombre de Frame de la vidéo
+OFFSET=52
 
 NANOSECONDS_PER_FRAMES=(1/30)*1000000000    #Les FPS de la vidéo
 
@@ -11,3 +12,5 @@ BINFRAME_PATH="Binframes/"
 PACKED_ARRAY=f"{SIZE}.npy".replace(' ','')   #Le fichier binaire
 
 WINDOW= 800,600     #La taille de la fenêtre
+
+AUDIO="Audio.mp3"

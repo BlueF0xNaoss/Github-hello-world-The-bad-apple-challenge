@@ -18,6 +18,7 @@ FAQ:
 
         Par contre si tu veux cacher, je n'ai encore rien fait de user friendly désolé... À dans deux versions
 
+
     3.Qu'est-ce que je peux custom en deux-deux sans vraiment tout casser?
         R/Dans Constantes.py
             Il y a là théoriquement les trucs les plus simples qu'une personne voudrait modifier:
@@ -25,7 +26,8 @@ FAQ:
                 _SIZE choisis la qualité de l'image mais aussi la taille du fichier vidéo, il vaut 60x80. La qualité est faible parce qu'avec ma méthode de 
             compression, une trop bonne qualité fait gonfler la taille du fichier, genre une vidéo de 3 minutes mais de 142 Mo, tu y crois toi?
 
-                _NUMBER_FRAMES définis la longueur de trame, en gros le nombre de frame au cas où tu as ton propre diaporama de photo
+                _NUMBER_FRAMES définis la longueur de trame, en gros le nombre de frame au cas où tu as ton propre diaporama de photo, note que par défaut le nombres de frames pris en compte est 6572, mais les frames visibles sont à 6520, j'en ai coupé 52 vers la fin pour matcher avec la musque qui elle s'arrêtait net.
+                Pour corriger ça, mets OFFSET à zéro
 
                 _NANOSECONDS_PER_FRAMES, c'est l'inverse des FPS en gros c'est la vitesse de lecture de la vidéo là on est à 30FPS
 
@@ -36,3 +38,5 @@ FAQ:
                 _PACKED_ARRAY, ça c'est le nom du fichier de la 'vidéo' qui sera créé 
 
                 _WINDOW c'est la taille de la fenêtre Pygame
+
+                _AUDIO c'est l'audio en question

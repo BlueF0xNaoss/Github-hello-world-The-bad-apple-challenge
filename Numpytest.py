@@ -29,26 +29,39 @@ pygame.mixer_music.load("Audio.mp3")
 pygame.mixer_music.play(loops=-1)
 
 Frame_id=0
-lastshot= time.time_ns()
+Start=lastshot= time.time_ns()
 print("Lancement de la vidéo")
 
+Playing=True
 while 1:
     for event in pygame.event.get():
         if event.type== pygame.QUIT:
             sys.exit()
             break
+        if event.type== pygame.KEYDOWN:
+            match(event.unicode):
+                case 'C':
+                    Playing=False
+                    pygame.mixer_music.pause()
+                case 'P':
+                    Playing=True
+                    pygame.mixer_music.unpause()
+        
+    
+    if Playing:
+        current= time.time_ns()
+        #C'est ma façon de ticker... Quoi il y a un moyen plus propre? Et alors, j'aime bien, c'est logique
+        if current-lastshot>=NANOSECONDS_PER_FRAMES:
+            display.fill("black")
 
-    current= time.time_ns()
-    #C'est ma façon de ticker... Quoi il y a un moyen plus propre? Et alors, j'aime bien, c'est logique
-    if current-lastshot>=NANOSECONDS_PER_FRAMES:
-        display.fill("black")
+            #On récupère les données d'une frame et on les affiche, c'est tout simple
+            pygame.surfarray.blit_array(Fenetre,dataset[Frame_id])
+            display.blit(pygame.transform.scale(Fenetre,espace),Main_rectangle)
 
-        #On récupère les données d'une frame et on les affiche, c'est tout simple
-        pygame.surfarray.blit_array(Fenetre,dataset[Frame_id])
-        display.blit(pygame.transform.scale(Fenetre,espace),Main_rectangle)
+            Frame_id+=1
+            Frame_id=Frame_id%(FRAME_NUMBER-OFFSET)
+            lastshot=current
 
-        Frame_id+=1
-        Frame_id=Frame_id%6520
-        lastshot=current
-
-        pygame.display.flip()
+            pygame.display.flip()
+    else:
+        continue
