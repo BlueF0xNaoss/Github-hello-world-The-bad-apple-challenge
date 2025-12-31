@@ -25,7 +25,7 @@ def Thread_convert(path=FRAME_PATH,repath=BINFRAME_PATH,size=(80,60)):
         Id=Bar.add_task("Open and convert",total=FRAME_NUMBER)
         for i in range(FRAME_NUMBER):
             a=i+1    
-            pl.open(f"{path}output_{a:0>4}.jpg").convert("1").resize(size).save(f"{repath}output_{a:0>4}.jpg")
+            pl.open(f"{path}output_{a:0>4}{EXTENSION}").convert("1").resize(size).save(f"{repath}output_{a:0>4}{EXTENSION}")
             Bar.advance(Id)
         actu+=1
 
@@ -47,7 +47,7 @@ def save(size=SIZE,name=f"{SIZE}".replace(' ',''),path=BINFRAME_PATH):
     while True:
         if State>=Thread_count:
             print("File registering")
-            dataset=np.packbits(dataset) #C'est ici qu'on empaquette les données de l'array ça compresse énomément, ça divise pratiquement par 6 la taille du paquet et pour un coût en calcul plutôt faible
+            dataset=np.packbits(dataset) #C'est ici qu'on empaquette les données de l'array ça compresse énomément, ça divise pratiquement par 8 la taille du paquet et pour un coût en calcul plutôt faible
             np.save(f"{name}.npy",dataset)
             print("\nSaved")
             break
@@ -60,7 +60,7 @@ def Thread_append(path,array,x:int=0,y:int=FRAME_NUMBER):
         Id=Bar.add_task("Open and append",total=y-x)
         for i in range(x,y):
             a=i+1
-            img=pl.open(f"{path}output_{a:0>4}.jpg").convert("1")
+            img=pl.open(f"{path}output_{a:0>4}{EXTENSION}").convert("1")
             array[i]=np.array(img,dtype=np.uint8)
             Bar.advance(Id)
         else:
@@ -68,4 +68,4 @@ def Thread_append(path,array,x:int=0,y:int=FRAME_NUMBER):
             print("C'est fait")
 
 convert_and_resize(size=SIZE)
-save(size=SIZE[::-1])
+save(size=SIZE[::-1],name="New_year")

@@ -5,3 +5,6 @@ __pycache__
 /Binframes
 /frames
 Les pépites de bug
+*.txt
+/Out
+/out

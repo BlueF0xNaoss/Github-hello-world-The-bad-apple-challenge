@@ -10,7 +10,8 @@ pygame.init()
 #Ensuite on est obligé d'inverser l'axe des x et des y sinon l'image sera inversé, c'est une affaire de comptage
 #Numpy compte de haut en bas comme c'est une matrice à deux dimensions et Pygame de gauche à droite comme cest une image
 dataset=np.load(PACKED_ARRAY,mmap_mode='r')
-dataset=np.unpackbits(dataset).reshape((FRAME_NUMBER,SIZE[1],SIZE[0]))
+#dataset=np.unpackbits(dataset)
+dataset=dataset.reshape((FRAME_NUMBER,SIZE[1],SIZE[0]))
 dataset=np.swapaxes(dataset,1,2)
 print("Initialisation terminée")
 
@@ -24,7 +25,7 @@ Fenetre=pygame.Surface(SIZE,depth=8)
 palette=[(0,0,0),(255,255,255)]+[(0,0,0)]*254   
 Fenetre.set_palette(palette)
 
-print("Lancement de l'audio")
+print("Chargement de l'audio")
 pygame.mixer_music.load("Audio.mp3")
 pygame.mixer_music.play(loops=-1)
 
